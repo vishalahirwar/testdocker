@@ -15,10 +15,9 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t vishal-test1:new .
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker save -o . vishal-test1
-      - aws s3 cp vishal-test1* s3://wipo-test-vishal-s3/
+      - aws s3 cp Dockerfile s3://wipo-test-vishal-s3/
