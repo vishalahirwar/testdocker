@@ -19,5 +19,4 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker save -o . vishal-test1
       - aws s3 cp Dockerfile s3://wipo-test-vishal-s3/
