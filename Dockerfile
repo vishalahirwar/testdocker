@@ -51,12 +51,5 @@ ENV DB_PASSWORD=password
 EXPOSE 8082
 CMD ["./bin/standalone.sh", "-b", "0.0.0.0"]
 
-
-
-
-#unzip the module 
-RUN unzip ${WILDFLY_HOME}/modules/com.zip -d ${WILDFLY_HOME}/modules/
-#deploy the war
-
 ### Command to run the container
 # docker container run -it -e DB_HOST=devsrv3.wipo.int -e DB_PORT=3306 -e DB_NAME=IAP1 -e DB_USER=iap1 -e DB_PASSWORD=4y5vRtU[gK8B -p 8082:8082 iap-business
