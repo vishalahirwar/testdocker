@@ -17,7 +17,7 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...     
       - docker build -t wipo-test:latest .
-      - docker tag wipo-test-vishala:latest 827132459049.dkr.ecr.us-east-1.amazonaws.com/wipo-test-vishala:latest
+      - docker tag wipo-test:latest 827132459049.dkr.ecr.us-east-1.amazonaws.com/wipo-test-vishala:latest
   post_build:
     commands:
       - echo Build completed on `date`
