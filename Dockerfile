@@ -4,8 +4,6 @@ USER root
 ARG OPENJDK_VERSION=1.8.0
 ARG TOMCAT_MAJOR=8
 ARG TOMCAT_VERSION=8.5.50
-ENV HTTPS_PROXY "https://10.135.0.29:8080"
-ENV HTTP_PROXY "http://10.135.0.29:8080"
 # Ensure root user is used               
 # Install required libs
 RUN yum update -y
@@ -67,7 +65,7 @@ WORKDIR $TOMCAT_HOME
 #COPY truststore.jks ${TOMCAT_HOME}/
 COPY wip.properties ${TOMCAT_HOME}/
 COPY iap.war ${TOMCAT_HOME}/webapps/
-COPY common-res.war ${TOMCAT_HOME}/webapps/
+#COPY common-res.war ${TOMCAT_HOME}/webapps/
 
 # Launch Tomcat
 CMD ["./bin/catalina.sh", "run"]
