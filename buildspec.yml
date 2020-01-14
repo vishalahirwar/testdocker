@@ -14,12 +14,12 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - echo Building the Docker image...     
+      - echo Building the Docker image...  
+      - ls  
       - docker build -t wipo-web-application:latest .
       - docker tag wipo-web-application:latest 547582605754.dkr.ecr.us-east-1.amazonaws.com/wipo-test-vishala:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - aws s3 cp Dockerfile s3://wipo-test-vishal-s3/
       - docker push 547582605754.dkr.ecr.us-east-1.amazonaws.com/wipo-test-vishala:latest
