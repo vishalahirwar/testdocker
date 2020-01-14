@@ -6,21 +6,20 @@ phases:
       docker: 18
     commands:
       - echo Logging in testing ...
-      - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay&
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...hhhhhh
       - aws --version
-      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      - $(aws ecr get-login --no-include-email --region us-east-1)
   build:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...     
       - docker build -t wipo-web-application:latest .
-      - docker tag wipo-web-application:latest 827132459049.dkr.ecr.us-east-1.amazonaws.com/wipo-test-vishala:latest
+      - docker tag wipo-web-application:latest 547582605754.dkr.ecr.us-east-1.amazonaws.com/wipo-test-vishala:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - aws s3 cp Dockerfile s3://wipo-test-vishal-s3/
-      - docker push 827132459049.dkr.ecr.us-east-1.amazonaws.com/wipo-test-vishala:latest
+      - docker push 547582605754.dkr.ecr.us-east-1.amazonaws.com/wipo-test-vishala:latest
